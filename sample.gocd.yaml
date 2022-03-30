@@ -31,7 +31,6 @@ pipelines:
                 - -c
                 - ls
                 - -ltr
-                - $GO_PIPELINE_NAME/scripts/uname.sh
                 run_if: passed
     - run_script:
         fetch_materials: true
@@ -46,6 +45,14 @@ pipelines:
             tasks:
             - exec:
                 command: pwd
+                run_if: passed
+            - exec:
+                command: sh
+                arguments:
+                - -c
+                - chmod
+                - +x
+                - ./scripts/uname.sh
                 run_if: passed
             - exec:
                 command: sh
