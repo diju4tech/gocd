@@ -26,8 +26,10 @@ pipelines:
             timeout: 0
             tasks:
             - exec:
-                command: ls
+                command: sh
                 arguments:
+                - -c
+                - ls
                 - -ltr
                 - $GO_PIPELINE_NAME
                 run_if: passed
