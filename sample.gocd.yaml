@@ -30,7 +30,7 @@ pipelines:
                 - -c
                 - mkdir
                 - -p
-                - /go/pipelines/${GO_PIPELINE_NAME}/${GO_PIPELINE_COUNTER}
+                - /go/pipelines/$GO_PIPELINE_NAME/$GO_PIPELINE_COUNTER
                 command: sh
                 run_if: passed
             - exec:
