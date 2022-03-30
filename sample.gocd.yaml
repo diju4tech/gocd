@@ -31,7 +31,7 @@ pipelines:
                 - -c
                 - ls
                 - -ltr
-                - ./scripts/uname.sh
+                - $GO_PIPELINE_NAME/scripts/uname.sh
                 run_if: passed
     - run_script:
         fetch_materials: true
@@ -51,5 +51,5 @@ pipelines:
                 command: sh
                 arguments:
                 - -c
-                - $GO_PIPELINE_NAME/scripts/uname.sh
+                - ./scripts/uname.sh
                 run_if: passed
