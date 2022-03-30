@@ -1,2 +1,0 @@
-#Uname updated
-uname -a
