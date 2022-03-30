@@ -28,5 +28,5 @@ pipelines:
             - exec:
                 command: ls
                 arguments:
-                - - ltr
+                - -ltr
                 run_if: passed
