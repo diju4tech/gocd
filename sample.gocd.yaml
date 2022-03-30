@@ -28,7 +28,7 @@ pipelines:
             - exec:
                 arguments:
                 - -p
-                - /go/pipelines/integration/git
+                - /go/pipelines/sample/git
                 command: mkdir
                 run_if: passed
             - exec:
