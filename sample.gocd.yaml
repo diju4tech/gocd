@@ -27,13 +27,17 @@ pipelines:
             tasks:
             - exec:
                 arguments:
+                - -c
+                - mkdir
                 - -p
                 - /go/pipelines/${GO_PIPELINE_NAME}/${GO_PIPELINE_COUNTER}
-                command: mkdir
+                command: sh
                 run_if: passed
             - exec:
-                command: git 
+                command: sh 
                 arguments:
+                - c
+                - git
                 - clone
                 - -b dev
                 - --single-branch
@@ -42,7 +46,8 @@ pipelines:
                 run_if: passed
             - exec:
                 arguments:
+                - ls
                 - -ltr
                 - /go/pipelines/${GO_PIPELINE_NAME}/${GO_PIPELINE_COUNTER}
-                command: ls
+                command: sh
                 run_if: passed
