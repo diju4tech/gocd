@@ -29,4 +29,5 @@ pipelines:
                 command: ls
                 arguments:
                 - -ltr
+                - $GO_PIPELINE_NAME
                 run_if: passed
