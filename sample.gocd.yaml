@@ -1,0 +1,43 @@
+format_version: 10
+pipelines:
+  sample:
+    group: defaultGroup
+    label_template: ${COUNT}
+    lock_behavior: none
+    display_order: -1
+    materials:
+      diju4tech-git-gocd:
+        git: https://github.com/diju4tech/gocd.git
+        username: diju4tech@gmail.com
+        shallow_clone: false
+        auto_update: true
+        branch: dev
+        encrypted_password: AES:t3f7USZOxkTRa83xzcwIdg==:dA0zNWMTq4oFoD55mdFB8Q==
+    stages:
+    - git-checkout:
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: false
+        jobs:
+          git-clone:
+            timeout: 0
+            tasks:
+            - exec:
+                arguments:
+                - -p
+                - /go/pipelines/integration/git
+                command: mkdir
+                run_if: passed
+            - exec:
+                command: git clone https://github.com/diju4tech/gocd.git
+                working_directory: git
+                run_if: passed
+            - exec:
+                arguments:
+                - -ltr
+                - /godata/git
+                command: ls
+                run_if: passed
