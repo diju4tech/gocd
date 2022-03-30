@@ -1,7 +1,7 @@
 format_version: 10
 pipelines:
   sample:
-    group: defaultGroup
+    group: sample
     label_template: ${COUNT}
     lock_behavior: none
     display_order: -1
@@ -10,7 +10,7 @@ pipelines:
         git: https://github.com/diju4tech/gocd.git
         username: diju4tech@gmail.com
         shallow_clone: false
-        auto_update: true
+        auto_update: false
         branch: dev
         encrypted_password: AES:t3f7USZOxkTRa83xzcwIdg==:dA0zNWMTq4oFoD55mdFB8Q==
     stages:
