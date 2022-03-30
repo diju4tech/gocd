@@ -32,7 +32,10 @@ pipelines:
                 command: mkdir
                 run_if: passed
             - exec:
-                command: git clone https://github.com/diju4tech/gocd.git
+                command: git 
+                arguments:
+                - clone
+                - https://github.com/diju4tech/gocd.git
                 working_directory: git
                 run_if: passed
             - exec:
