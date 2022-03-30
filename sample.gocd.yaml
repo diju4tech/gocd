@@ -17,7 +17,7 @@ pipelines:
     - git-checkout:
         fetch_materials: true
         keep_artifacts: false
-        clean_workspace: false
+        clean_workspace: true
         approval:
           type: success
           allow_only_on_success: false
@@ -28,9 +28,7 @@ pipelines:
             - exec:
                 arguments:
                 - -c
-                - mkdir
-                - -p
-                - /go/pipelines/$GO_PIPELINE_NAME/$GO_PIPELINE_COUNTER
+                - mkdir -p /go/pipelines/$GO_PIPELINE_NAME/$GO_PIPELINE_COUNTER
                 command: sh
                 run_if: passed
             - exec:
