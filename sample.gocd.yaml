@@ -28,7 +28,7 @@ pipelines:
             - exec:
                 arguments:
                 - -p
-                - /go/pipelines/$GO_PIPELINE_NAME/$GO_PIPELINE_COUNTER
+                - /go/pipelines/${env.GO_PIPELINE_NAME}/${env.GO_PIPELINE_COUNTER}
                 command: mkdir
                 run_if: passed
             - exec:
@@ -43,6 +43,6 @@ pipelines:
             - exec:
                 arguments:
                 - -ltr
-                - /go/pipelines/$GO_PIPELINE_NAME/$GO_PIPELINE_COUNTER/
+                - /go/pipelines/${env.GO_PIPELINE_NAME}/${env.GO_PIPELINE_COUNTER}
                 command: ls
                 run_if: passed
