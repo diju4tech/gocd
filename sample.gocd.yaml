@@ -14,7 +14,7 @@ pipelines:
         branch: dev
         encrypted_password: AES:t3f7USZOxkTRa83xzcwIdg==:dA0zNWMTq4oFoD55mdFB8Q==
     stages:
-    - git-checkout:
+    - validate_scripts:
         fetch_materials: true
         keep_artifacts: false
         clean_workspace: true
@@ -22,7 +22,7 @@ pipelines:
           type: success
           allow_only_on_success: false
         jobs:
-          git-clone:
+          validate:
             timeout: 0
             tasks:
             - exec:
@@ -31,5 +31,22 @@ pipelines:
                 - -c
                 - ls
                 - -ltr
-                - $GO_PIPELINE_NAME
+                - $GO_PIPELINE_NAME/scripts/uname.sh
+                run_if: passed
+    - run_script:
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: true
+        approval:
+          type: success
+          allow_only_on_success: false
+        jobs:
+          run:
+            timeout: 0
+            tasks:
+            - exec:
+                command: sh
+                arguments:
+                - -c
+                - $GO_PIPELINE_NAME/scripts/uname.sh
                 run_if: passed
