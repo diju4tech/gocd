@@ -28,19 +28,21 @@ pipelines:
             - exec:
                 arguments:
                 - -p
-                - /go/pipelines/sample/git
+                - /go/pipelines/$GO_PIPELINE_NAME/$GO_PIPELINE_COUNTER
                 command: mkdir
                 run_if: passed
             - exec:
                 command: git 
                 arguments:
                 - clone
+                - -b dev
+                - --single-branch
                 - https://github.com/diju4tech/gocd.git
-                working_directory: git
+                working_directory: $GO_PIPELINE_COUNTER
                 run_if: passed
             - exec:
                 arguments:
                 - -ltr
-                - /godata/git
+                - /go/pipelines/$GO_PIPELINE_NAME/$GO_PIPELINE_COUNTER/
                 command: ls
                 run_if: passed
